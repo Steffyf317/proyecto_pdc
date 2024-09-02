@@ -3,3 +3,4 @@
 ###·Steffy Geraldine Fernández González
 ###·Andrés Felipe Sánchez Gómez
 ###·Nilson Daniel Dueñas López
+[![Logo-Blood-Small.png](https://i.postimg.cc/2ytcCvyY/Logo-Blood-Small.png)](https://postimg.cc/QKpkbFcY)
