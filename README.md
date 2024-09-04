@@ -24,7 +24,7 @@ flowchart TD;
     I-->K(Fin)
 ```
 ## 2. Comparador de la palabra y contador de intentos.
-#### EN principio esto se encarga de tomar la palabra y transferir cada caracter a una matriz para luego ser comparada con el input 
+#### En principio esto se encarga de tomar la palabra y transferir cada caracter a una matriz para luego ser comparada con el input 
 ```python
 palabra_dividida=[]
 palabra_avance=[]
