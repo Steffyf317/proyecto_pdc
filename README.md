@@ -162,3 +162,86 @@ while contador_vidas>0:
         print("Incorrecto")
     print(palabra_avance)
 ```
+## 3. Interfaz gráfica
+```mermaid
+graph TD
+    A[Inicio] --> B[Función mostrar_escenario]
+    B --> C{¿Cuántos errores?}
+    C --> D0[0 errores: Mostrar horca vacía]
+    C --> D1[1 error: Mostrar cabeza]
+    C --> D2[2 errores: Mostrar cabeza y cuerpo]
+    C --> D3[3 errores: Mostrar cabeza, cuerpo y un brazo]
+    C --> D4[4 errores: Mostrar cabeza, cuerpo y ambos brazos]
+    C --> D5[5 errores: Mostrar cabeza, cuerpo, brazos y una pierna]
+    C --> D6[6 errores: Mostrar figura completa]
+    D0 --> E[Fin]
+    D1 --> E
+    D2 --> E
+    D3 --> E
+    D4 --> E
+    D5 --> E
+    D6 --> E
+```
+```python
+def mostrar_escenario(errores):
+    ahorcado = {
+        0: '''
+          ------
+          |    |
+          |
+          |
+          |
+          |
+        ---------''',
+        1: '''
+          ------
+          |    |
+          |    O
+          |
+          |
+          |
+        ---------''',
+        2: '''
+          ------
+          |    |
+          |    O
+          |    |
+          |
+          |
+        ---------''',
+        3: '''
+          ------
+          |    |
+          |    O
+          |   /|
+          |
+          |
+        ---------''',
+        4: '''
+          ------
+          |    |
+          |    O
+          |   /|\\
+          |
+          |
+        ---------''',
+        5: '''
+          ------
+          |    |
+          |    O
+          |   /|\\
+          |   /
+          |
+        ---------''',
+        6: '''
+          ------
+          |    |
+          |    O
+          |   /|\\
+          |   / \\
+          |
+        ---------'''
+    }
+    print(ahorcado[errores])
+```
+## En esta sección del código, se creó una función llamada mostrar_escenario, cuyo propósito es mostrar visualmente el progreso de un juego de ahorcado. Dentro de la función, se incluyó un diccionario que contiene varias representaciones gráficas, cada una mostrando una parte diferente del dibujo del ahorcado. El diccionario maneja diferentes situaciones, desde cuando no se ha cometido ningún error y la horca está vacía, hasta cuando el dibujo del ahorcado está completamente formado. Cada clave en el diccionario corresponde a un número de errores, y cada valor es una representación gráfica de cómo debería verse la figura del ahorcado en ese momento del juego.
