@@ -183,7 +183,10 @@ graph TD
     D6 --> E
 ```
 ```python
-def mostrar_escenario(errores):
+vidas_iniciales = 6
+
+def mostrar_escenario(vidas):
+    errores = vidas_iniciales - vidas      
     ahorcado = {
         0: '''
           ------
