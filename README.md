@@ -90,7 +90,7 @@ print(funcion_prueba)
 ```python
 palabra_dividida=[]
 palabra_avance=[]
-contador_vidas=5
+contador_vidas=6
 letra_usuario = str
 letra_intentos=[]
 for i in range(0,len(funcion_prueba)):
@@ -123,7 +123,7 @@ while contador_vidas>0:
 ```python
 palabra_dividida=[]
 palabra_avance=[]
-contador_vidas=5
+contador_vidas=6
 letra_usuario =[]
 letra_intentos=[]
 ```
