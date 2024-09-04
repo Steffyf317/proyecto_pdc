@@ -25,7 +25,7 @@ flowchart TD;
 ```
 ## 2. Comparador de la palabra y contador de intentos.
 #### EN principio esto se encarga de tomar la palabra y transferir cada caracter a una matriz para luego ser comparada con el input 
-python
+```python
 palabra_dividida=[]
 palabra_avance=[]
 contador_vidas=5
@@ -50,7 +50,7 @@ while contador_vidas>0:
         contador_vidas-=1
         print("Incorrecto")
     print(palabra_avance)
-
+```
 ### Definiendo las listas necesarias, siendo:
 * palabra_dividida: sera la base para comparar el input (es posible con un string, lo decidimos hacer haci por comodidad)
 * palabra_avance: sera donde se guarde los aciertos del input, y sera la usada para la condicion de victoria
@@ -58,22 +58,22 @@ while contador_vidas>0:
 * letra_usuario: input del usuario, se corrobora vs letra_intentos
 * letra_intentos: donde se almancenan cada input unico del usuario
 
-python
+```python
 palabra_dividida=[]
 palabra_avance=[]
 contador_vidas=5
 letra_usuario =[]
 letra_intentos=[]
-
+```
 ### Creacion de listas:
 * Primero se crea una con cada caracter de la palabra
 * Se crea tambien una lista con indices vacios para tener el largo de la palabra donde se pueda ingresar los aciertos
 
-python
+```python
 for i in range(0,len(funcion_prueba)):
     palabra_dividida.append(funcion_prueba[i])
     palabra_avance.append("")
-
+```
 ### Comparador:
 1. Primera parte:
   
@@ -84,7 +84,7 @@ for i in range(0,len(funcion_prueba)):
 2.  Segunda parte
 +Comparador: si la letra esta en palabra_dividida se dice Correcto y se pasa a comparar la letra en cada posicion de la lista, en el incide que este se cumpla se reemplaza el vacio con letra_usuario
 +Sino: se resta una vida y se dice Incorrecto
-python
+```python
 while contador_vidas>0:
     letra_usuario = str(input("Ingrese una letra : "))
     while letra_usuario in letra_intentos:
@@ -99,3 +99,4 @@ while contador_vidas>0:
         contador_vidas-=1
         print("Incorrecto")
     print(palabra_avance)
+```
