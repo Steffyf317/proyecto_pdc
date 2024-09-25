@@ -14,7 +14,7 @@ flowchart TD;
     A-->B[Se crea una base de datos de 1000 palabras y de 10 categorías en Excel];
     B-->C[Se importan las categorías como archivos .csv];
     C-->D[Para importar dentro del notebook de Google colab, se usa el url de descarga del archivo];
-    D-->E[Se crean los dataframes de las categorías con la librería pandas];
+    D-->E[Se crea el dataframe con la librería pandas];
     E-->F[Se crea una función para elegir una palabra aleatoria con la librería random];
     F-->G[Se caracteriza cada categoría con un número];
     G-->H;
