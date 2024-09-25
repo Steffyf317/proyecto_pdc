@@ -40,7 +40,7 @@ def categoria_elegida_usuario(categoria_usuario,df_base_datos):
   else:
     return "Opción no válida, por favor elija un número del 1 al 10 dentro de las categorías disponibles "
 
-print(" 1.Animales \n 2.carreras universitarias \n 3.ciudades \n 4.comida \n 5.cuerpo humano \n 6.deportes \n 7.objetos de la casa \n 8.paises \n 9.elementos de la tabla periódica \n 10.universidad ")
+print(" 1.Animales \n 2.Países \n 3.Carreras universitarias \n 4.comida \n 5.cuerpo humano \n 6.deportes \n 7.universidad \n 8.Elementos tabla periódica \n 9.Ciudades \n 10.Objetos del hogar ")
 categoria_usuario = int(input("Elija una categoría digitando el número correspondiente "))
 funcion_prueba = categoria_elegida_usuario(categoria_usuario,df_base_datos)
 ```
