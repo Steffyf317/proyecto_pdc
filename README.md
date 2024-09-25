@@ -72,20 +72,108 @@ while contador_vidas>0:
         print("Incorrecto")
     print(palabra_avance)
 ```
-### Definiendo las listas necesarias, siendo:
+### Definiendo las listas variables, listas y diccionarios necesarias siendo:
 * palabra_dividida: sera la base para comparar el input (es posible con un string, lo decidimos hacer haci por comodidad)
 * palabra_avance: sera donde se guarde los aciertos del input, y sera la usada para la condicion de victoria
-* contador_vidas: simplemente el contador de errores, se podria hacer vidas respecto a las letras unicas de la palabra o preguntando cuantos intentos
+* vidas: el contador de errores
 * letra_usuario: input del usuario, se corrobora vs letra_intentos
 * letra_intentos: donde se almancenan cada input unico del usuario
-
+* dificultad_usuario: se define dependiendo del input de dificultad y de este dependera la cantidad de vidas_iniciales
+* vidas_iniciales: con la dificultad definida, toma diferentes valores
 ```python
 palabra_dividida=[]
-palabra_avance=[]
-contador_vidas=6
-letra_usuario =[]
-letra_intentos=[]
+  palabra_avance=[]
+  dificultad_usuario=0
+  print(" 1.Facil \n 2.Medio \n 3.Dificil")
+  while dificultad_usuario != 1 and dificultad_usuario != 2 and dificultad_usuario != 3:
+    dificultad_usuario = input("Elija una dificultad : ")
+    if dificultad_usuario.isdigit():
+      dificultad_usuario = int(dificultad_usuario)
+    else:
+      print("Opción no válida, por favor elija un número del 1 al 3")
+      continue
+    if dificultad_usuario==1:
+      vidas_iniciales=6
+    elif dificultad_usuario==2:
+      vidas_iniciales=4
+    elif dificultad_usuario==3:
+      vidas_iniciales=2
+    else:
+      print("Opción no válida, por favor elija un número del 1 al 3")
+  vidas=0
+  letra_usuario =[]
+  letra_intentos=[]
+``` 
+###Globales o Banderas definidas al incio
+* continua: Bandera para continuar el juego con mas jugadores
+* puntaje: Se usara en el resultado de cada partida para dar el resultado de dicha partida
+* puntajes: Diccionario donde se definira, "Jugador" mas el numero del ciclo que va y su value es el puntaje de dicho ciclo, ej: Jugardo 1: 45, Jugador 2: 30
+* contador_juegos: Lleva el conteo de ciclos de juegos, se usa para definir el key de puntajes
+```python
+continuar=True
+puntaje=0
+puntajes={}
+contador_juegos=1
+``` 
+
+### Continuar, Mas jugadores
+* Todo el juego se encierra dentro de un bucle dependiente de continuar (el cual se define con un input al finalizar cada juego)
+* se usa: si_no como comprobante de ser un input valido y luego se asigna el nuevo True o False a continuar para seguir o no el bucle
+```python
+while continuar:
+.............
+si_no=input("Deseas continuar jugando? Y/N")
+  if si_no.isalpha():
+    si_no=si_no.upper()
+    if si_no=="Y":
+      continuar=True
+    elif si_no=="N":
+      continuar=False
+      print("Gracias por jugar")
+    else:
+      print("Opción no válida")
+      break
+  else:
+    print("Opción no válida")
+    continue
+while (si_no!=False) or (si_no!=True):
+    si_no=input("Deseas continuar jugando? Y/N")
+    if si_no.isalpha():
+      si_no=si_no.upper()
+    else:
+      print("Opción no válida")
+      continue
+    if si_no=="Y":
+      continuar=True
+    elif si_no=="N":
+      continuar=False
+      print("Gracias por jugar")
+      break
+    else:
+      print("Opción no válida")
+```  
+
+### Dificultad
+* Se usa un bucle para confirmar que el input hace parte de la seleccion de dificultas, o pedir el input nuevamente
+```python
+print(" 1.Facil \n 2.Medio \n 3.Dificil")
+  while dificultad_usuario != 1 and dificultad_usuario != 2 and dificultad_usuario != 3:
+    dificultad_usuario = input("Elija una dificultad : ")
+    if dificultad_usuario.isdigit():
+      dificultad_usuario = int(dificultad_usuario)
+    else:
+      print("Opción no válida, por favor elija un número del 1 al 3")
+      continue
+    if dificultad_usuario==1:
+      vidas_iniciales=6
+    elif dificultad_usuario==2:
+      vidas_iniciales=4
+    elif dificultad_usuario==3:
+      vidas_iniciales=2
+    else:
+      print("Opción no válida, por favor elija un número del 1 al 3")
 ```
+
 ### Creacion de listas:
 * Primero se crea una con cada caracter de la palabra
 * Se crea tambien una lista con indices vacios para tener el largo de la palabra donde se pueda ingresar los aciertos
@@ -98,7 +186,7 @@ for i in range(0,len(funcion_prueba)):
 ### Comparador:
 1. Primera parte:
   
-+ while: Todo esta rodeado por un loop dependiente de el flag contador_vidas
++ while: Todo esta rodeado por un loop dependiente de el flag vidas
 + input: Se pide una letra, entra a un loop para confirmar que esta letra no esta en la lista letra_intentos
 + letra_intentos: si se cumple con lo anterior se pasa a añadir la letra a letra_intentos
             
@@ -106,20 +194,45 @@ for i in range(0,len(funcion_prueba)):
 +Comparador: si la letra esta en palabra_dividida se dice Correcto y se pasa a comparar la letra en cada posicion de la lista, en el incide que este se cumpla se reemplaza el vacio con letra_usuario
 +Sino: se resta una vida y se dice Incorrecto
 ```python
-while contador_vidas>0:
-    letra_usuario = str(input("Ingrese una letra : "))
-    while letra_usuario in letra_intentos:
-        letra_usuario = str(input("Ingrese una letra diferente: "))
-    letra_intentos.append(letra_usuario)
-    if letra_usuario in palabra_dividida :
+while vidas<=vidas_iniciales:
+      letra_usuario = str(input("Ingrese una letra : "))
+      while letra_usuario in letra_intentos:
+          letra_usuario = str(input("Ingrese una letra diferente: "))
+      letra_intentos.append(letra_usuario)
+      if letra_usuario in palabra_dividida :
             print("Correcto")
             for i in range(0,len(funcion_prueba)):
                 if palabra_dividida[i]==letra_usuario:
                     palabra_avance[i]=letra_usuario
-    else:
-        contador_vidas-=1
-        print("Incorrecto")
-    print(palabra_avance)
+      else:
+          vidas+=1
+          if vidas<=vidas_iniciales:
+            print("Incorrecto")
+            mostrar_escenario(vidas)
+            print("Te quedan ",vidas_iniciales-vidas," vidas")
+      print(palabra_avance)
+      if palabra_avance==palabra_dividida:
+        print("Felicidades encontraste la palabra")
+        break
+      elif vidas==vidas_iniciales:
+        print("Perdiste")
+        break
+
+```
+### Conteo Aciertos, Puntaje (calculo e impresion), Puntajes Jugadores
+* Se recorre la lista de avance y se suman los aciertos
+* Se da el calculo del puntaje de la ronda
+* Se añade el Jugador[#] y su puntaje a el diccionario de puntajes y se imprime
+```python
+  for letras in palabra_avance:
+    if letras!="":
+      puntaje+=1
+  print("Tu puntaje es de {punt}".format(punt=int(puntaje/len(palabra_dividida)*100)))
+  puntaje_global+=puntaje/len(palabra_dividida)*100
+  puntajes["Jugador{0}".format(contador_juegos)]=int(puntaje/len(palabra_dividida)*100)
+  puntaje=0
+  for i in puntajes:
+    print(i,puntajes[i])
 ```
 ## 3. Interfaz gráfica
 ```mermaid
@@ -142,10 +255,7 @@ graph TD
     D6 --> E
 ```
 ```python
-vidas_iniciales = 6
-
 def mostrar_escenario(vidas):
-    errores = vidas_iniciales - vidas      
     ahorcado = {
         0: '''
           ------
@@ -204,6 +314,6 @@ def mostrar_escenario(vidas):
           |
         ---------'''
     }
-    print(ahorcado[errores])
+    print(ahorcado[vidas])
 ```
 #### En esta sección del código, se creó una función llamada mostrar_escenario, cuyo propósito es mostrar visualmente el progreso de un juego de ahorcado. Dentro de la función, se incluyó un diccionario que contiene varias representaciones gráficas, cada una mostrando una parte diferente del dibujo del ahorcado. El diccionario maneja diferentes situaciones, desde cuando no se ha cometido ningún error y la horca está vacía, hasta cuando el dibujo del ahorcado está completamente formado. Cada clave en el diccionario corresponde a un número de errores, y cada valor es una representación gráfica de cómo debería verse la figura del ahorcado en ese momento del juego.
